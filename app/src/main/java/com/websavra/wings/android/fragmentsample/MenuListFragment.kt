@@ -54,6 +54,7 @@ class MenuListFragment : Fragment() {
         val adapter = SimpleAdapter(activity, menuList, android.R.layout.simple_list_item_2
         , from, to)
         lvMenu.adapter = adapter
+        lvMenu.onItemClickListener = ListItemClickListener()
 
         return view
     }
