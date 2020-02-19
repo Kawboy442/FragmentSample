@@ -34,13 +34,13 @@ class MenuThanksFragment : Fragment() {
         tvMenuPrice.text = menuPrice
 
         val btBackButton = view.findViewById<Button>(R.id.btBackButton)
-        btBackButton.setOnClickListener(ButtonClickListener)
+        btBackButton.setOnClickListener(ButtonClickListener())
 
         return view
     }
 
     private inner class ButtonClickListener: View.OnClickListener {
-        override fun onClick(v: View?) {
+        override fun onClick(view: View?) {
             activity?.finish()
         }
     }
