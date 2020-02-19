@@ -1,11 +1,13 @@
 package com.websavra.wings.android.fragmentsample
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.SimpleAdapter
 
@@ -54,6 +56,23 @@ class MenuListFragment : Fragment() {
         lvMenu.adapter = adapter
 
         return view
+    }
+
+    private inner class ListItemClickListener : AdapterView.OnItemClickListener {
+        override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+
+            val item = parent.getItemAtPosition(position) as MutableMap<String, String>
+
+            val menuName = item["name"]
+            val menuPrice = item["price"]
+
+            val intent = Intent(activity, MenuThanksActivity::class.java)
+
+            intent.putExtra("menuName", menuName)
+            intent.putExtra("menuPrice", menuPrice)
+
+            startActivity(intent)
+        }
     }
 
 
