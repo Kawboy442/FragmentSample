@@ -18,6 +18,15 @@ class MenuListFragment : Fragment() {
 
     private var _isLayoutXLarge = true
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val menuThanksFragment = fragmentManager?.findFragmentById(R.id.fragmentMenuList)
+        if (menuThanksFragment == null) {
+            _isLayoutXLarge = false
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
