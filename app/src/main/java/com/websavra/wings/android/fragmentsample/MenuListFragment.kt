@@ -16,6 +16,8 @@ import android.widget.SimpleAdapter
  */
 class MenuListFragment : Fragment() {
 
+    private var _isLayoutXLarge = true
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -57,6 +59,16 @@ class MenuListFragment : Fragment() {
         lvMenu.onItemClickListener = ListItemClickListener()
 
         return view
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        val menuThanksFrame = activity?.findViewById<View>(R.id.menuThanksFrame)
+
+        if (menuThanksFrame == null) {
+            _isLayoutXLarge = false
+        }
     }
 
     private inner class ListItemClickListener : AdapterView.OnItemClickListener {
